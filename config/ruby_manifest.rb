@@ -1,3 +1,6 @@
+require 'json'
+
+
 #Configuration files
 require_relative 'movie_loader.rb'
 

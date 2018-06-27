@@ -1,4 +1,6 @@
 require_relative '../config/ruby_manifest.rb'
+require 'json'
+
 
 class SchedulerController
   attr_reader :load_view, :runner_view, :movie_loader, :today
@@ -23,7 +25,17 @@ class SchedulerController
     end
 
     until finished
-      # logic for your program
+      file = File.read('movie_list.json')
+      movie_hash = JSON.parse(file)
+      
+      input = gets.chomp
+      "all" = movie_hash
+
+      movie_hash.each_with_index do |movie, index|
+        puts "#{index} - #{movie["title"]}"
+      end
+
+
 
       runner_view.ask_if_user_is_finished
       user_choice = gets.chomp
